@@ -1,0 +1,84 @@
+/* Reset and full viewport coverage */
+.app-container {
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+/* ChatGPT-like Layout */
+.chatgpt-layout {
+  display: flex;
+  background: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+  background: var(--bg-primary);
+  /* Changed to dark theme */
+}
+
+.loading-state {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-size: 16px;
+  color: var(--text-secondary);
+  background: var(--bg-primary);
+}
+
+/* Sidebar wrapper for show/hide */
+.sidebar-wrapper {
+  transition: margin-left 0.3s ease, opacity 0.3s ease;
+  z-index: 20;
+}
+
+.sidebar-wrapper.hidden {
+  margin-left: -260px;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.sidebar-wrapper.visible {
+  margin-left: 0;
+  opacity: 1;
+}
+
+/* Open sidebar button (shows when sidebar is closed) */
+.open-sidebar-btn {
+  position: fixed;
+  top: 16px;
+  left: 16px;
+  z-index: 1001;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  box-shadow: none;
+  color: var(--text-secondary);
+}
+
+.open-sidebar-btn:hover {
+  background: transparent;
+  color: var(--text-primary);
+  box-shadow: none;
+  transform: scale(1.05);
+}
+
+.open-sidebar-btn:active {
+  transform: scale(0.95);
+}

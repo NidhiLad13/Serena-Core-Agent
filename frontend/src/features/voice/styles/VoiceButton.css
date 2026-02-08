@@ -1,0 +1,177 @@
+/* features/voice-agent/components/VoiceButton/VoiceButton.css */
+.voice-button {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+  position: relative;
+}
+
+.voice-button:hover:not(:disabled) {
+  transform: scale(1.05);
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.6);
+}
+
+.voice-button:active:not(:disabled) {
+  transform: scale(0.95);
+}
+
+.voice-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.voice-button.recording {
+  background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  animation: pulse 1.5s ease-in-out infinite;
+  box-shadow: 0 4px 15px rgba(245, 87, 108, 0.6);
+}
+
+.voice-button.recording:hover:not(:disabled) {
+  box-shadow: 0 6px 20px rgba(245, 87, 108, 0.8);
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.voice-button svg {
+  width: 24px;
+  height: 24px;
+}
+
+/* Active Control Bar Styles */
+.voice-controls-expanded {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #2d2d2d;
+  padding: 6px;
+  border-radius: 30px;
+  animation: slideIn 0.3s ease-out;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.voice-action-btn {
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  color: white;
+}
+
+/* Mute Button */
+.mute-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: #3a3a3a;
+  color: #e5e5e5;
+}
+
+.mute-btn:hover {
+  background: #4a4a4a;
+}
+
+.mute-btn.muted {
+  background: #ef4444;
+  /* Red when muted */
+  color: white;
+}
+
+/* End Button */
+.end-btn {
+  height: 42px;
+  padding: 0 20px;
+  border-radius: 24px;
+  background: #007bff;
+  /* Blue like image 1 */
+  color: white;
+  font-weight: 600;
+  font-size: 15px;
+  gap: 8px;
+}
+
+.end-btn:hover {
+  background: #0069d9;
+}
+
+/* Audio Wave Dots Animation */
+.audio-wave-dots {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  height: 12px;
+}
+
+.audio-wave-dots span {
+  width: 3px;
+  height: 3px;
+  background: white;
+  border-radius: 50%;
+  animation: wave 1s ease-in-out infinite;
+}
+
+.audio-wave-dots span:nth-child(1) {
+  animation-delay: 0.0s;
+}
+
+.audio-wave-dots span:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.audio-wave-dots span:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+.audio-wave-dots span:nth-child(4) {
+  animation-delay: 0.6s;
+}
+
+@keyframes wave {
+
+  0%,
+  100% {
+    transform: scaleY(1);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: scaleY(2);
+    opacity: 1;
+  }
+}
+
+.btn-text {
+  margin-left: 2px;
+}

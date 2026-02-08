@@ -1,0 +1,312 @@
+.chat-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0;
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    padding-top: 70px;
+    /* Space for the absolute header */
+}
+
+.message-list {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 20px;
+    padding-top: 0;
+    /* Handled by parent */
+    max-width: 800px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.message-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    max-width: 90%;
+    animation: fadeIn 0.3s ease-out forwards;
+    opacity: 0;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.message-row.user {
+    align-self: flex-end;
+    flex-direction: row-reverse;
+}
+
+.message-row.agent {
+    align-self: flex-start;
+}
+
+.message-avatar {
+    width: 32px;
+    height: 32px;
+    flex-shrink: 0;
+    margin-top: 4px;
+}
+
+.message-avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: var(--shadow-sm);
+}
+
+.message-bubble {
+    padding: 14px 18px;
+    border-radius: var(--radius-lg);
+    position: relative;
+    box-shadow: var(--shadow-sm);
+    font-size: 15px;
+    line-height: 1.6;
+    letter-spacing: 0.01em;
+}
+
+.message-row.user .message-bubble {
+    background: var(--accent-gradient);
+    color: white;
+    border-bottom-right-radius: 4px;
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.25);
+}
+
+.message-row.agent .message-bubble {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+    border-bottom-left-radius: 4px;
+    border: 1px solid var(--border-subtle);
+}
+
+.message-time {
+    display: block;
+    font-size: 10px;
+    margin-top: 6px;
+    opacity: 0.7;
+    text-align: right;
+    font-weight: 500;
+}
+
+.message-row.user .message-time {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.message-row.agent .message-time {
+    color: var(--text-tertiary);
+}
+
+/* Markdown Content Styling */
+.message-content {
+    width: 100%;
+}
+
+.markdown-p {
+    margin: 0 0 12px 0;
+    line-height: 1.6;
+}
+
+.markdown-p:last-child {
+    margin-bottom: 0;
+}
+
+.markdown-h3 {
+    font-size: 16px;
+    font-weight: 600;
+    margin: 16px 0 8px 0;
+    color: inherit;
+}
+
+.markdown-h3:first-child {
+    margin-top: 0;
+}
+
+.markdown-ul,
+.markdown-ol {
+    margin: 8px 0 12px 0;
+    padding-left: 24px;
+}
+
+.markdown-li {
+    margin: 4px 0;
+    line-height: 1.5;
+}
+
+.markdown-code-inline {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-family: 'Monaco', 'Courier New', monospace;
+    font-size: 13px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.message-row.user .markdown-code-inline {
+    background-color: rgba(255, 255, 255, 0.2);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.markdown-pre {
+    background-color: var(--bg-tertiary);
+    padding: 16px;
+    border-radius: var(--radius-md);
+    overflow-x: auto;
+    margin: 12px 0;
+    border: 1px solid var(--border-subtle);
+}
+
+.message-row.user .markdown-pre {
+    background-color: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.markdown-code-block {
+    font-family: 'Monaco', 'Courier New', monospace;
+    font-size: 13px;
+    line-height: 1.5;
+    color: #e5e7eb;
+}
+
+.message-row.user .markdown-code-block {
+    color: #ffffff;
+}
+
+.markdown-strong {
+    font-weight: 600;
+}
+
+/* Loading Indicator - Three Dots Animation */
+.loading-bubble {
+    padding: 18px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-secondary) !important;
+    border: 1px solid var(--border-subtle) !important;
+}
+
+.typing-indicator {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    height: 20px;
+}
+
+.typing-indicator span {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--accent-primary);
+    display: inline-block;
+    animation: typing 1.4s infinite ease-in-out both;
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
+}
+
+.typing-indicator span:nth-child(1) {
+    animation-delay: -0.32s;
+}
+
+.typing-indicator span:nth-child(2) {
+    animation-delay: -0.16s;
+}
+
+.typing-indicator span:nth-child(3) {
+    animation-delay: 0;
+}
+
+@keyframes typing {
+
+    0%,
+    80%,
+    100% {
+        transform: scale(0.6);
+        opacity: 0.5;
+    }
+
+    40% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* Streaming Text and Cursor */
+.streaming-text {
+    display: inline;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    line-height: 1.6;
+}
+
+.streaming-cursor {
+    display: inline;
+    margin-left: 2px;
+    animation: blink 1s infinite;
+    font-weight: 700;
+    color: var(--accent-secondary);
+    font-size: 1em;
+    line-height: inherit;
+    vertical-align: baseline;
+    text-shadow: 0 0 8px rgba(139, 92, 246, 0.6);
+}
+
+.message-row.user .streaming-cursor {
+    color: rgba(255, 255, 255, 0.9);
+    text-shadow: none;
+}
+
+.message-row.agent .streaming-cursor {
+    color: var(--accent-secondary);
+}
+
+@keyframes blink {
+
+    0%,
+    49% {
+        opacity: 1;
+    }
+
+    50%,
+    100% {
+        opacity: 0;
+    }
+}
+
+.scroll-bottom-btn {
+    position: absolute;
+    bottom: 150px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.2s ease;
+    z-index: 10;
+    font-size: 14px;
+}
+
+.scroll-bottom-btn:hover {
+    background: var(--bg-tertiary);
+    color: var(--text-primary);
+    transform: translateX(-50%) translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
